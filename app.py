@@ -48,3 +48,9 @@ if st.button("解析する"):
         plt.title("Self-Attention Weights")
         st.pyplot(fig)
 
+plt.figure(figsize=(len(tokens), len(tokens)))  # トークン数に応じて動的にサイズ変更
+        sns.heatmap(attn_weights.detach().numpy(), annot=True, xticklabels=tokens, yticklabels=tokens, cmap="YlGnBu")
+        st.pyplot(plt)
+
+
+
