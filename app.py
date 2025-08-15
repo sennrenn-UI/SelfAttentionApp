@@ -35,24 +35,24 @@ if st.button("解析する"):
         attn_weights = F.softmax(scores, dim=-1)
         output = torch.matmul(attn_weights, V)
 
-       # 可視化
-fig, ax = plt.subplots(figsize=(6, 5))
-sns.heatmap(attn_weights.detach().numpy(),
-            annot=True,
-            xticklabels=tokens,
-            yticklabels=tokens,
-            cmap="YlGnBu",
-            ax=ax)
-plt.xlabel("Key（見てる単語）")
-plt.ylabel("Query（注目してる単語）")
-plt.title("Self-Attention Weights")
-st.pyplot(fig)
+        # 可視化
+        fig, ax = plt.subplots(figsize=(6, 5))
+        sns.heatmap(attn_weights.detach().numpy(),
+                    annot=True,
+                    xticklabels=tokens,
+                    yticklabels=tokens,
+                    cmap="YlGnBu",
+                    ax=ax)
+        plt.xlabel("Key（見てる単語）")
+        plt.ylabel("Query（注目してる単語）")
+        plt.title("Self-Attention Weights")
+        st.pyplot(fig)
 
-# トークン数に応じて動的にサイズ変更した別図
-fig2, ax2 = plt.subplots(figsize=(len(tokens), len(tokens)))
-sns.heatmap(attn_weights.detach().numpy(), annot=True, xticklabels=tokens, yticklabels=tokens, cmap="YlGnBu", ax=ax2)
-st.pyplot(fig2)
+        # トークン数に応じて動的にサイズ変更した別図
+        fig2, ax2 = plt.subplots(figsize=(len(tokens), len(tokens)))
+        st.write("attn_weights の形:", attn_weights.shape)
+        st.write(attn_weights)
 
-
-
-
+        sns.heatmap(attn_weights.detach().numpy(), annot=True, xticklabels=tokens, yticklabels=tokens, cmap="YlGnBu",
+                    ax=ax2)
+        st.pyplot(fig2)
