@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from janome.tokenizer import Tokenizer
 
+st.set_page_config(page_title="Self-Attention　可視化アプリ", page_icon="💻")  
+
 st.title("Self-Attention 可視化アプリ")
 st.markdown("文章を入力して「解析する」を押すと、Self-Attention の重みを可視化します。")
 
